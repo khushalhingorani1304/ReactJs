@@ -5,18 +5,32 @@ import './App.css'
 import Navbar from './components/Navbar'
 import TextForm from './components/TextForm'
 import About from './components/About'
+import Alerts from './components/Alerts'
 
 function App() {
 
-  const [mode,setMode] = useState('light');
+ const [alert, setAlert] = useState(null);
+
+ function showAlert(msg ,type){
+    setAlert({
+      message : msg,
+      type : type
+    })
+
+    setTimeout(()=>{
+      setAlert(null);
+    },3000);
+ }
 
 
   return (
     <>
-      <Navbar title="TextUtils" aboutText = "About us" mode={mode}/>
+      <Navbar title="TextUtils" aboutText = "About us"/>
+
+      <Alerts Alert = {alert}/>
 
       <div className="container my-3">
-        <TextForm heading="Enter the text to analyze!"/>
+        <TextForm heading="Enter the text to analyze!" showAlert={showAlert}/>
       </div>
 
       {/* <div className="container my-3">
