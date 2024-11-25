@@ -1,46 +1,41 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import Navbar from './components/Navbar'
-import TextForm from './components/TextForm'
-import About from './components/About'
-import Alerts from './components/Alerts'
+import { React, useState } from "react";
+import "./App.css";
+import Navbar from "./components/Navbar";
+import TextForm from "./components/TextForm";
+import About from "./components/About";
+import Alerts from "./components/Alerts";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 function App() {
+  const [alert, setAlert] = useState(null);
 
- const [alert, setAlert] = useState(null);
-
- function showAlert(msg ,type){
+  function showAlert(msg, type) {
     setAlert({
-      message : msg,
-      type : type
-    })
+      message: msg,
+      type: type,
+    });
 
-    setTimeout(()=>{
+    setTimeout(() => {
       setAlert(null);
-    },3000);
- }
-
+    }, 3000);
+  }
 
   return (
     <>
-      <Navbar title="TextUtils" aboutText = "About us"/>
+      <Router>
+        <Navbar title="TextUtils" aboutText="About us" />
 
-      <Alerts Alert = {alert}/>
+        <Alerts Alert={alert} />
 
-      <div className="container my-3">
-        <TextForm heading="Enter the text to analyze!" showAlert={showAlert}/>
-      </div>
-
-      {/* <div className="container my-3">
-        {/* <About/> */}
-      {/* </div> */}
-      
-
+        <div className="container my-3">
+          <Routes>
+            <Route exact path="/about" element={<About />}/>
+            <Route exact path="/" element = {<TextForm heading="Enter the text to analyze!" showAlert={showAlert} />} />
+          </Routes>
+        </div>
+      </Router>
     </>
-  )
+  );
 }
 
-
-export default App
+export default App;

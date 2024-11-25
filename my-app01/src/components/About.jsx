@@ -5,8 +5,8 @@ import React, { useState } from "react";
 function About() {
 
     const [myStyle,setMyStyle] = useState({
-        color : 'white',
-        backgroundColor : 'black'
+        color : 'black',
+        backgroundColor : 'white'
     })
     
     
