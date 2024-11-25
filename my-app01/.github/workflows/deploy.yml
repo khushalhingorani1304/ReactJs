@@ -1,9 +1,9 @@
-name: Deploy to GitHub Pages
+name: Deploy my-app01 to GitHub Pages
 
 on:
   push:
     branches:
-      - main  # Change this if your default branch is not main
+      - main  # Adjust if your default branch is different
 
 jobs:
   build-and-deploy:
@@ -19,13 +19,18 @@ jobs:
           node-version: '16'
 
       - name: Install dependencies
-        run: npm install
+        run: |
+          cd my-app01
+          npm install
 
       - name: Build the project
-        run: npm run build
+        run: |
+          cd my-app01
+          npm run build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          publish_dir: my-app01/dist
+          destination_dir: my-app01  # Deploy within the my-app01 directory on gh-pages
