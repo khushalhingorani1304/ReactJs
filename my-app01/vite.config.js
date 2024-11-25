@@ -3,5 +3,5 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  base: '/Reactjs/my-app01/'
+  base: '/ReactJs/my-app01/'  // Path should match the folder structure
 });
