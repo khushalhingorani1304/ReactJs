@@ -3,11 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-
- "homepage": "https://your-username.github.io/Reactjs/my-app01", 
   "scripts": {
-    "predeploy": "npm run build", 
-    "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
